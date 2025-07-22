@@ -132,7 +132,7 @@
     <h2 class="section-title">Certificates</h2>
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
-        <img src="assets/certificate1.jpg" class="img-fluid mb-3" alt="Certificate 1">
+        <img src="assets/certificate1.PNG" class="img-fluid mb-3" alt="Certificate 1">
         <p>Front-End Development - Coursera</p>
       </div>
     </div>
@@ -143,21 +143,26 @@
 <section id="contact" class="py-5">
   <div class="container">
     <h2 class="section-title">Contact Me</h2>
-    <form>
-      <div class="mb-3">
-        <label class="form-label">Your Name</label>
-        <input type="text" class="form-control" placeholder="Your name">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Your Email</label>
-        <input type="email" class="form-control" placeholder="you@example.com">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Message</label>
-        <textarea class="form-control" rows="4" placeholder="Your message here..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send</button>
-    </form>
+    <form action="https://formsubmit.co/aishaalialjahri680@gmail.com" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Your Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Your name" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Your Email</label>
+    <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea class="form-control" name="message" rows="4" placeholder="Your message here..." required></textarea>
+  </div>
+
+  <!-- إعدادات إضافية -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://aishaalialjahri.github.io/thanks.html">
+
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
     <div class="text-center mt-4">
       <a href="https://github.com/" target="_blank" class="btn btn-outline-dark me-2">GitHub</a>
       <a href="https://linkedin.com/" target="_blank" class="btn btn-outline-primary">LinkedIn</a>
