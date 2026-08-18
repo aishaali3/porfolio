@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aisha Aljahri — Computer Engineer | Flutter & Laravel Developer. Building modern mobile applications, REST APIs and full-stack systems.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Aisha Aljahri | Computer Engineer & Flutter/Laravel Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: rgba(255,255,255,.82);
+      --surface-solid: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --border: rgba(23,32,51,.10);
+      --navy: #0b1220;
+      --navy-2: #111c31;
+      --accent: #4f8cff;
+      --accent-2: #7c5cff;
+      --accent-soft: rgba(79,140,255,.12);
+      --shadow: 0 20px 60px rgba(16,24,40,.10);
+      --radius: 22px;
+      --nav-height: 76px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #070b14;
+      --surface: rgba(15,23,42,.72);
+      --surface-solid: #0f172a;
+      --text: #eef4ff;
+      --muted: #9aa8bd;
+      --border: rgba(255,255,255,.09);
+      --navy: #050914;
+      --navy-2: #0c1528;
+      --accent-soft: rgba(79,140,255,.14);
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(79,140,255,.08), transparent 28%),
+        radial-gradient(circle at 85% 40%, rgba(124,92,255,.06), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      transition: background .3s ease, color .3s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1180px; }
+
+    /* Navbar */
+    .navbar-custom {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(7,11,20,.70);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    html[data-theme="light"] .navbar-custom {
+      background: rgba(255,255,255,.78);
+      border-bottom-color: var(--border);
+    }
+    .brand {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      font-size: 1.1rem;
+    }
+    .brand-dot { color: var(--accent); }
+    .nav-link-custom {
+      color: var(--muted) !important;
+      font-size: .92rem;
+      font-weight: 600;
+      margin: 0 .3rem;
+      transition: color .2s ease;
+    }
+    .nav-link-custom:hover { color: var(--text) !important; }
+    .theme-btn, .menu-btn {
+      width: 42px; height: 42px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(11,18,32,.98), rgba(8,14,27,.96)),
+        var(--navy);
+      color: #fff;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 460px; height: 460px;
+      right: -160px; top: 70px;
+      background: radial-gradient(circle, rgba(79,140,255,.20), transparent 68%);
+    }
+    .hero::after {
+      width: 420px; height: 420px;
+      left: -190px; bottom: -180px;
+      background: radial-gradient(circle, rgba(124,92,255,.16), transparent 68%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .20;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,.11);
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      color: #cbd7ea;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .eyebrow i { color: #6fa3ff; }
+    .hero h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 800;
+      margin: 24px 0 20px;
+      max-width: 850px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(90deg, #fff, #a8c7ff 55%, #b9a9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-copy {
+      max-width: 680px;
+      color: #aebbd0;
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn-main {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 13px;
+      font-weight: 700;
+      box-shadow: 0 12px 28px rgba(79,140,255,.22);
+    }
+    .btn-main:hover { color: #fff; transform: translateY(-2px); }
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      padding: 12px 20px;
+      border-radius: 13px;
+      font-weight: 700;
+    }
+    .btn-ghost:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 18px;
+      margin-top: 42px;
+      color: #8e9db4;
+      font-size: .88rem;
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta i { color: #6fa3ff; }
+
+    /* Sections */
+    section { padding: 100px 0; }
+    .section-label {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.045em;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .section-subtitle {
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Cards */
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .about-card { padding: 32px; height: 100%; }
+    .about-card p { color: var(--muted); line-height: 1.9; }
+    .mini-stat {
+      padding: 18px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,140,255,.10);
+    }
+    .mini-stat strong { display:block; font-size: 1.3rem; }
+    .mini-stat span { color: var(--muted); font-size: .82rem; }
+
+    /* Skills */
+    .skill-card {
+      padding: 24px;
+      height: 100%;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .skill-card:hover { transform: translateY(-5px); border-color: rgba(79,140,255,.28); }
+    .skill-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items:center; justify-content:center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+    .skill-card h5 { font-weight: 800; }
+    .skill-card p { color: var(--muted); font-size: .9rem; line-height: 1.7; margin:0; }
+
+    /* Projects */
+    .featured-project {
+      padding: 0;
+      overflow: hidden;
+      border-radius: 28px;
+    }
+    .project-placeholder {
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(79,140,255,.35), transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(124,92,255,.28), transparent 32%),
+        linear-gradient(135deg, #0e1a31, #080d18);
+    }
+    .project-placeholder::before {
+      content: "</>";
+      position:absolute;
+      font-family: monospace;
+      font-size: 9rem;
+      font-weight: 800;
+      color: rgba(255,255,255,.05);
+      right: 8%; bottom: -15px;
+    }
+    .placeholder-label {
+      position:absolute; left: 28px; top: 28px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      color:#d8e5ff;
+      font-size:.78rem;
+      font-weight:700;
+    }
+    .project-content { padding: 32px; }
+    .project-content h3 { font-family:"Plus Jakarta Sans"; font-weight:800; letter-spacing:-.03em; }
+    .project-content p { color:var(--muted); line-height:1.8; }
+    .tech-tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+    .tech-tag {
+      font-size:.76rem; font-weight:700;
+      padding:7px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      background:var(--accent-soft);
+      border:1px solid var(--border);
+    }
+    .project-card {
+      overflow:hidden;
+      height:100%;
+      transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .project-card:hover {
+      transform:translateY(-7px);
+      border-color:rgba(79,140,255,.28);
+      box-shadow:0 25px 70px rgba(0,0,0,.18);
+    }
+    .project-thumb {
+      min-height:210px;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(79,140,255,.32), transparent 30%),
+        linear-gradient(135deg,#101d35,#0a1020);
+      position:relative;
+    }
+    .project-thumb span {
+      position:absolute; bottom:16px; left:18px;
+      color:#dbe8ff; font-weight:800; font-size:.8rem;
+      letter-spacing:.08em; text-transform:uppercase;
+    }
+    .project-body { padding:24px; }
+    .project-body h5 { font-weight:800; }
+    .project-body p { color:var(--muted); line-height:1.7; font-size:.9rem; }
+
+    /* Timeline */
+    .timeline { position:relative; }
+    .timeline::before {
+      content:""; position:absolute; left:9px; top:6px; bottom:6px;
+      width:1px; background:var(--border);
+    }
+    .timeline-item { position:relative; padding-left:38px; margin-bottom:30px; }
+    .timeline-dot {
+      position:absolute; left:3px; top:5px;
+      width:13px; height:13px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 5px var(--accent-soft);
+    }
+    .timeline-item h5 { font-weight:800; margin-bottom:5px; }
+    .timeline-item .date { color:var(--accent); font-size:.8rem; font-weight:700; }
+    .timeline-item p { color:var(--muted); line-height:1.75; margin-top:8px; }
+
+    /* Services */
+    .service { padding:26px; height:100%; }
+    .service i { font-size:1.7rem; color:var(--accent); }
+    .service h5 { font-weight:800; margin:18px 0 10px; }
+    .service p { color:var(--muted); line-height:1.7; font-size:.9rem; margin:0; }
+
+    /* Contact */
+    .contact-box {
+      padding:42px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(124,92,255,.17), transparent 32%),
+        radial-gradient(circle at 10% 90%, rgba(79,140,255,.13), transparent 32%),
+        var(--surface-solid);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    .form-control {
+      background:var(--bg);
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:13px 15px;
+      border-radius:12px;
+    }
+    .form-control:focus {
+      background:var(--bg); color:var(--text);
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px var(--accent-soft);
+    }
+    .form-control::placeholder { color:var(--muted); }
+
+    footer {
+      padding:30px 0;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:.86rem;
+    }
+    .social-link {
+      width:40px; height:40px; display:inline-flex;
+      align-items:center; justify-content:center;
+      border:1px solid var(--border); border-radius:12px;
+      color:var(--muted); transition:.2s;
+    }
+    .social-link:hover { color:var(--text); border-color:var(--accent); transform:translateY(-2px); }
+
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        margin-top:10px; padding:15px;
+        border:1px solid var(--border);
+        border-radius:16px;
+        background:var(--surface-solid);
+      }
+      .hero { padding-top:135px; }
+    }
+    @media (max-width: 767px) {
+      section { padding:75px 0; }
+      .hero { min-height:auto; padding-bottom:75px; }
+      .hero h1 { font-size:3rem; }
+      .hero-copy { font-size:1rem; }
+      .contact-box, .about-card, .project-content { padding:25px; }
+      .project-placeholder { min-height:260px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================
+       NAVBAR
+       ========================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand brand" href="#home">Aisha<span class="brand-dot">.</span></a>
+
+      <div class="d-flex align-items-center gap-2 order-lg-2">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+        <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Open menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse order-lg-1" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================
+       HERO
+       ========================= -->
+  <header class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="eyebrow"><i class="bi bi-code-slash"></i> Computer Engineer · Software Developer</div>
+
+          <h1>
+            Building <span class="gradient">modern digital solutions</span>
+            with Flutter & Laravel.
+          </h1>
+
+          <p class="hero-copy">
+            I’m Aisha Aljahri, a Computer Engineer specializing in Flutter/Dart mobile development
+            and Laravel backend development. I build practical applications, REST APIs and
+            full-stack systems with a focus on clean architecture and reliable user experiences.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-main"><i class="bi bi-grid-3x3-gap me-2"></i>View Projects</a>
+            <a href="cv.pdf" class="btn btn-ghost" download><i class="bi bi-file-earmark-arrow-down me-2"></i>Download CV</a>
+            <a href="#contact" class="btn btn-ghost"><i class="bi bi-chat-dots me-2"></i>Let's Work Together</a>
+          </div>
+
+          <div class="hero-meta">
+            <span><i class="bi bi-phone"></i> Flutter / Dart</span>
+            <span><i class="bi bi-server"></i> Laravel / PHP</span>
+            <span><i class="bi bi-database"></i> MySQL</span>
+            <span><i class="bi bi-git"></i> Git / GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Engineering ideas into useful software.</h2>
+      <p class="section-subtitle mb-5">
+        A professional introduction focused on the skills, technologies and practical systems I build.
+      </p>
+
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-8">
+          <div class="glass-card about-card">
+            <p>
+              My name is <strong>Aisha Aljahri</strong>, a Computer Engineer specializing in
+              Flutter/Dart mobile development and Laravel backend development.
+              I work as a Teaching Assistant at Hadhramaut University, College of Engineering and Petroleum,
+              mentoring students in programming.
+            </p>
+            <p>
+              I have hands-on experience building software systems from REST APIs and database-backed
+              services to cross-platform mobile applications. I’m interested in both remote employment
+              and freelance opportunities where I can turn real requirements into reliable digital products.
+            </p>
+            <a href="#contact" class="btn btn-main mt-2">Start a Conversation <i class="bi bi-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="glass-card about-card">
+            <div class="mini-stat mb-3">
+              <strong>Flutter + Laravel</strong>
+              <span>Primary development focus</span>
+            </div>
+            <div class="mini-stat mb-3">
+              <strong>Full-Stack Systems</strong>
+              <span>API · Mobile · Database</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Yemen · Hadhramaut</strong>
+              <span>Open to remote opportunities</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container reveal">
+      <div class="section-label">Tech Stack</div>
+      <h2 class="section-title">Tools I use to build products.</h2>
+      <p class="section-subtitle mb-5">A focused stack for mobile applications, backend APIs and full-stack systems.</p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-phone"></i></div>
+            <h5>Flutter & Dart</h5>
+            <p>Cross-platform mobile applications with reusable UI, state management and API integration.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-code-square"></i></div>
+            <h5>Laravel & PHP</h5>
+            <p>Backend development, authentication, business logic, database integration and REST APIs.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-database"></i></div>
+            <h5>MySQL</h5>
+            <p>Relational database design, migrations, relationships and application data management.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-braces"></i></div>
+            <h5>REST API</h5>
+            <p>Connecting mobile clients with secure, structured backend services and application data.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-palette"></i></div>
+            <h5>UI / UX</h5>
+            <p>Clean interfaces and practical user flows with attention to usability and visual hierarchy.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card skill-card">
+            <div class="skill-icon"><i class="bi bi-git"></i></div>
+            <h5>Git & GitHub</h5>
+            <p>Version control, project organization and professional code collaboration workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container reveal">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+          <div class="section-label">Selected Work</div>
+          <h2 class="section-title mb-2">Featured Projects</h2>
+          <p class="section-subtitle mb-0">A selection of practical applications and full-stack systems.</p>
+        </div>
+      </div>
+
+      <!-- Featured project is generated from PROJECTS[0] -->
+      <div id="featuredProject"></div>
+
+      <div class="row g-4 mt-1" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / EDUCATION -->
+  <section id="experience">
+    <div class="container reveal">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">Experience & Education</h2>
+      <p class="section-subtitle mb-5">A concise professional timeline. Add exact dates when you are ready.</p>
+
+      <div class="glass-card p-4 p-lg-5">
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="date">Professional Experience</div>
+            <h5>Teaching Assistant · Hadhramaut University</h5>
+            <p>College of Engineering and Petroleum — supporting students and mentoring programming-related learning.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="date">Education</div>
+            <h5>B.Sc. in Computer Engineering</h5>
+            <p>Hadhramaut University. Add graduation year and additional academic details here when ready.</p>
+          </div>
+
+          <div class="timeline-item mb-0">
+            <span class="timeline-dot"></span>
+            <div class="date">Development Focus</div>
+            <h5>Flutter · Laravel · REST APIs</h5>
+            <p>Hands-on development of mobile applications and backend systems, including a restaurant delivery management system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container reveal">
+      <div class="section-label">What I Can Build</div>
+      <h2 class="section-title">From idea to working software.</h2>
+      <p class="section-subtitle mb-5">Services aligned with my current development stack.</p>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card service">
+            <i class="bi bi-phone"></i>
+            <h5>Flutter Apps</h5>
+            <p>Cross-platform mobile applications with modern interfaces and API integration.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card service">
+            <i class="bi bi-hdd-stack"></i>
+            <h5>Laravel APIs</h5>
+            <p>Backend services, authentication, database logic and RESTful APIs.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card service">
+            <i class="bi bi-diagram-3"></i>
+            <h5>Full-Stack Systems</h5>
+            <p>Connected mobile, backend and database solutions for real business workflows.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-card service">
+            <i class="bi bi-window-stack"></i>
+            <h5>Web Interfaces</h5>
+            <p>Responsive web interfaces and portfolio/business websites with clean UI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <div class="container reveal">
+      <div class="section-label">Learning</div>
+      <h2 class="section-title">Certificates</h2>
+      <p class="section-subtitle mb-5">Add your certificates here as you upload the final images.</p>
+
+      <div class="row g-4" id="certificateGrid">
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-3 h-100">
+            <div class="project-thumb rounded-4 d-flex align-items-center justify-content-center">
+              <i class="bi bi-award" style="font-size:3rem;color:#8fb6ff"></i>
+            </div>
+            <div class="p-3">
+              <h5 class="fw-bold">Certificate</h5>
+              <p class="text-secondary mb-0">Replace this placeholder with your certificate image and title.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container reveal">
+      <div class="contact-box">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">Have a project in mind?</h2>
+            <p class="section-subtitle">
+              I’m open to remote opportunities and freelance projects. Add your final contact details below when ready.
+            </p>
+
+            <div class="d-flex gap-2 mt-4">
+              <a class="social-link" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+              <a class="social-link" href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a class="social-link" href="mailto:YOUR_EMAIL@example.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="https://formsubmit.co/aishaalialjahri680@gmail.com" method="POST">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="thanks.html">
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="name">Your Name</label>
+                  <input class="form-control" id="name" type="text" name="name" placeholder="Your name" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="email">Your Email</label>
+                  <input class="form-control" id="email" type="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-main" type="submit">Send Message <i class="bi bi-send ms-2"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© <span id="year"></span> Aisha Aljahri. All rights reserved.</span>
+      <span>Designed & built with focus on clean, useful software.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* =========================================================
+       PROJECT MANAGER
+       ---------------------------------------------------------
+       To ADD a project: copy one object and add it to PROJECTS.
+       To DELETE: remove its object.
+       To REPLACE: edit its fields.
+
+       thumbnail:
+       - Replace "assets/project-name.jpg" when you upload images.
+       link:
+       - Put the HTML page for the project here.
+       github:
+       - Put the GitHub repository URL here.
+       ========================================================= */
+
+    const PROJECTS = [
+      {
+        featured: true,
+        title: "Restaurant Delivery Management System",
+        category: "Full-Stack System",
+        description:
+          "A full-stack restaurant delivery management solution connecting a Laravel backend API, authentication, database workflows, Flutter driver application and an admin dashboard.",
+        technologies: ["Laravel", "PHP", "Sanctum", "Flutter", "Dart", "MySQL", "REST API"],
+        thumbnail: "assets/delivery-system.jpg",
+        link: "delivery-system-1.html",
+        github: "https://github.com/"
+      },
+      {
+        title: "Driver App",
+        category: "Flutter Mobile App",
+        description:
+          "A mobile application for delivery drivers, designed to support delivery workflows and communication with the backend system.",
+        technologies: ["Flutter", "Dart", "API", "Mobile"],
+        thumbnail: "assets/driver-app.png",
+        link: "driver-app.html",
+        github: "https://github.com/"
+      },
+      {
+        title: "Drive System",
+        category: "Delivery Platform",
+        description:
+          "A practical delivery workflow system for managing drivers, orders and operational processes.",
+        technologies: ["Laravel", "PHP", "MySQL", "REST API"],
+        thumbnail: "assets/driver-system.png",
+        link: "driveSystem.html",
+        github: "https://github.com/"
+      },
+      {
+        title: "Task Manager App",
+        category: "Flutter Mobile App",
+        description:
+          "A cross-platform task management application built with Flutter, focused on simple and practical task workflows.",
+        technologies: ["Flutter", "Dart", "Mobile"],
+        thumbnail: "assets/task-manager.png",
+        link: "task-manager.html",
+        github: "https://github.com/"
+      }
+    ];
+
+    function projectTags(items) {
+      return items.map(item => `<span class="tech-tag">${item}</span>`).join("");
+    }
+
+    function renderProjects() {
+      const featured = PROJECTS.find(p => p.featured) || PROJECTS[0];
+      const others = PROJECTS.filter(p => p !== featured);
+
+      document.getElementById("featuredProject").innerHTML = featured ? `
+        <article class="glass-card featured-project mb-4">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-6">
+              <div class="project-placeholder" style="background-image:
+                linear-gradient(135deg, rgba(14,26,49,.80), rgba(8,13,24,.88)),
+                url('${featured.thumbnail}');
+                background-size:cover;background-position:center;">
+                <span class="placeholder-label"><i class="bi bi-star-fill me-2"></i>Featured Project</span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="project-content h-100 d-flex flex-column justify-content-center">
+                <div class="section-label">${featured.category}</div>
+                <h3>${featured.title}</h3>
+                <p>${featured.description}</p>
+                <div class="tech-tags">${projectTags(featured.technologies)}</div>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-main" href="${featured.link}" target="_blank" rel="noopener noreferrer">
+                    View Case Study <i class="bi bi-arrow-up-right ms-2"></i>
+                  </a>
+                  <a class="btn btn-outline-secondary rounded-3 px-3" href="${featured.github}" target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-github me-2"></i>GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      ` : "";
+
+      document.getElementById("projectGrid").innerHTML = others.map(project => `
+        <div class="col-md-6 col-lg-4">
+          <article class="glass-card project-card">
+            <a href="${project.link}" target="_blank" rel="noopener noreferrer">
+              <div class="project-thumb" style="background-image:
+                linear-gradient(135deg, rgba(16,29,53,.78), rgba(10,16,32,.86)),
+                url('${project.thumbnail}');
+                background-size:cover;background-position:center;">
+                <span>${project.category}</span>
+              </div>
+            </a>
+            <div class="project-body">
+              <h5>${project.title}</h5>
+              <p>${project.description}</p>
+              <div class="tech-tags">${projectTags(project.technologies)}</div>
+              <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="fw-bold">
+                View Project <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      `).join("");
+    }
+
+    renderProjects();
+
+    /* Theme */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme) root.setAttribute("data-theme", savedTheme);
+
+    function updateThemeIcon() {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      themeToggle.innerHTML = isDark
+        ? '<i class="bi bi-sun-fill"></i>'
+        : '<i class="bi bi-moon-stars-fill"></i>';
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("portfolio-theme", next);
+      updateThemeIcon();
+    });
+    updateThemeIcon();
+
+    /* Reveal animations */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    /* Current year */
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
